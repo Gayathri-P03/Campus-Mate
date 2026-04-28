@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>CSE Results</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+margin:0;
+padding:20px;
+}
+
+h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
+font-size:14px;
+}
+
+th{
+background:#2a3942;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f9f9f9;
+}
+
+.pass{
+color:green;
+font-weight:bold;
+}
+
+.fail{
+color:red;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>CSE Department Result</h2>
+
+<table>
+
+<tr>
+
+<th>Name</th>
+<th>Reg No</th>
+
+<th>Design Thinking</th>
+<th>Result</th>
+<th>Marks</th>
+
+<th>AR VR</th>
+<th>Result</th>
+<th>Marks</th>
+
+<th>BDA</th>
+<th>Result</th>
+<th>Marks</th>
+
+<th>Ethics</th>
+<th>Result</th>
+<th>Marks</th>
+
+<th>IOT</th>
+<th>Result</th>
+<th>Marks</th>
+
+<th>POM</th>
+<th>Result</th>
+<th>Marks</th>
+
+</tr>
+
+{% for r in results %}
+
+<tr>
+
+<td>{{ r.student_name }}</td>
+<td>{{ r.reg_no }}</td>
+
+<td>Design Thinking</td>
+<td class="{% if r.design_marks >= 50 %}pass{% else %}fail{% endif %}">
+{% if r.design_marks >= 50 %}P{% else %}F{% endif %}
+</td>
+<td>{{ r.design_marks }}</td>
+
+<td>AR VR</td>
+<td class="{% if r.arvr_marks >= 50 %}pass{% else %}fail{% endif %}">
+{% if r.arvr_marks >= 50 %}P{% else %}F{% endif %}
+</td>
+<td>{{ r.arvr_marks }}</td>
+
+<td>BDA</td>
+<td class="{% if r.bda_marks >= 50 %}pass{% else %}fail{% endif %}">
+{% if r.bda_marks >= 50 %}P{% else %}F{% endif %}
+</td>
+<td>{{ r.bda_marks }}</td>
+
+<td>Ethics</td>
+<td class="{% if r.ethics_marks >= 50 %}pass{% else %}fail{% endif %}">
+{% if r.ethics_marks >= 50 %}P{% else %}F{% endif %}
+</td>
+<td>{{ r.ethics_marks }}</td>
+
+<td>IOT</td>
+<td class="{% if r.iot_marks >= 50 %}pass{% else %}fail{% endif %}">
+{% if r.iot_marks >= 50 %}P{% else %}F{% endif %}
+</td>
+<td>{{ r.iot_marks }}</td>
+
+<td>POM</td>
+<td class="{% if r.pom_marks >= 50 %}pass{% else %}fail{% endif %}">
+{% if r.pom_marks >= 50 %}P{% else %}F{% endif %}
+</td>
+<td>{{ r.pom_marks }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

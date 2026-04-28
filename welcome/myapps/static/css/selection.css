@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    animation: fadeIn 1.5s ease;
+}
+
+.title {
+    font-size: 42px;
+    margin-bottom: 50px;
+    line-height: 1.4;
+    text-shadow: 0px 0px 20px rgba(255,255,255,0.3);
+}
+
+.button-group {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Visitor Button */
+.visitor {
+    background: #6366f1;
+}
+.visitor:hover {
+    background: #4f46e5;
+    transform: scale(1.1);
+}
+
+/* Staff Button */
+.staff {
+    background: #10b981;
+}
+.staff:hover {
+    background: #059669;
+    transform: scale(1.1);
+}
+
+/* Student Button */
+.student {
+    background: #f59e0b;
+}
+.student:hover {
+    background: #d97706;
+    transform: scale(1.1);
+}
+/* Office Button */
+/* Office Button */
+.office {
+    background: #ec4899 !important;
+}
+
+.office:hover {
+    background: #db2777 !important;
+    transform: scale(1.1);
+}
+
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

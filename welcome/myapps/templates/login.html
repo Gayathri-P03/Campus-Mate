@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Bot Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>College Bot Login</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {% if messages %}
+    <div class="popup-container">
+    {% for message in messages %}
+        <div class="popup-error">
+            {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter username" required>
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password" required>
+        </div>
+
+        <button type="submit">Login</button>
+
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select Class</title>
+<link rel="stylesheet" href="{% static 'css/staff_timetable.css' %}">
+</head>
+
+<body>
+
+<h2>Select Class for No Due Verification</h2>
+
+<div class="container">
+
+<a href="{% url 'staff_no_due' 'A' %}" class="card a">Final CSE A</a>
+<a href="{% url 'staff_no_due' 'B' %}" class="card b">Final CSE B</a>
+<a href="{% url 'staff_no_due' 'C' %}" class="card c">Final CSE C</a>
+
+</div>
+
+</body>
+</html>

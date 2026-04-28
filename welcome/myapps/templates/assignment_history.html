@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Assignment History</title>
+
+<link rel="stylesheet" href="/static/css/assignment.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>Uploaded Assignments</h1>
+
+<div class="menu">
+
+<a href="/assignment_upload/">Upload Assignment</a>
+
+<a href="/assignment_history/">History</a>
+
+</div>
+
+</div>
+
+<div class="form-section">
+
+<h2>Assignment History</h2>
+
+<table border="1" width="100%" cellpadding="10">
+
+<tr>
+<th>Student Name</th>
+<th>Register Number</th>
+<th>Subject</th>
+<th>Assignment</th>
+<th>Date</th>
+<th>File</th>
+</tr>
+
+{% for a in assignments %}
+
+<tr>
+<td>{{a.student_name}}</td>
+<td>{{a.register_number}}</td>
+<td>{{a.subject}}</td>
+<td>{{a.assignment_no}}</td>
+<td>{{a.date}}</td>
+<td>
+<a href="{{a.assignment_file.url}}" target="_blank">View</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+</div>
+
+</body>
+</html>

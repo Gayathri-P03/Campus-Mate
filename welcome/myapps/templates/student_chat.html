@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Student Chat</title>
+
+<link rel="stylesheet" href="{% static 'css/student_chat.css' %}?v=2">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="sidebar-header">
+            Student Groups
+        </div>
+
+        <div class="groups">
+
+            <a href="/student-chat/?group=CSE STUDENTS" class="group">CSE STUDENTS</a>
+            <a href="/student-chat/?group=FINAL YEAR CSE" class="group">FINAL YEAR CSE</a>
+            <a href="/student-chat/?group=AI" class="group">AI</a>
+            <a href="/student-chat/?group=FULL STACK" class="group">FULL STACK</a>
+            <a href="/student-chat/?group=WEB DESIGN" class="group">WEB DESIGN</a>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RIGHT CHAT SECTION -->
+
+    <div class="chat-section">
+
+        <div class="chat-header">
+            {% if group %}
+                {{ group }}
+            {% else %}
+                Select a Group
+            {% endif %}
+        </div>
+
+
+
+        <div class="chat-messages">
+
+            {% for msg in messages %}
+
+<div class="message {% if msg.sender == 'Staff' %}staff-msg{% else %}student-msg{% endif %}">
+
+    <div class="msg-top">
+
+        <span class="sender">{{ msg.sender }}</span>
+
+        <div class="right-side">
+            <span class="time">{{ msg.time|date:"h:i A" }}</span>
+
+            <span class="dots" onclick="toggleMenu({{ msg.id }})">⋮</span>
+
+            <div class="dropdown" id="menu-{{ msg.id }}">
+                <a href="{% url 'delete_message' msg.id %}">Delete</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text">
+        {{ msg.message }}
+    </div>
+
+</div>
+
+{% endfor %}
+
+        </div>
+
+
+
+        {% if group %}
+        <form method="POST" class="chat-input">
+
+            {% csrf_token %}
+
+            <input type="hidden" name="group" value="{{ group }}">
+
+            <input type="text" name="message" placeholder="Type message..." required>
+
+            <button type="submit">Send</button>
+
+        </form>
+        {% endif %}
+
+    </div>
+
+</div>
+<script>
+
+function toggleMenu(id){
+
+    let menu = document.getElementById("menu-" + id);
+
+    if(menu.style.display === "block"){
+        menu.style.display = "none";
+    }else{
+        menu.style.display = "block";
+    }
+
+}
+
+</script>
+</body>
+</html>

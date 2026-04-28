@@ -1,0 +1,146 @@
+body{
+    font-family: Arial, sans-serif;
+    background: #eef3fb;
+    margin: 0;
+}
+
+/* Header */
+
+h2{
+    text-align: center;
+    padding: 20px;
+    background: #1e3a8a;
+    color: white;
+    margin: 0;
+}
+
+/* Chat Container */
+
+.chat-box{
+    width: 80%;
+    margin: 30px auto;
+    height: 400px;
+    overflow-y: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Message */
+
+.msg{
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background: #dbeafe;
+    border-radius: 8px;
+    max-width: 70%;
+}
+
+/* Sender name */
+
+.msg b{
+    color: #1e3a8a;
+}
+
+/* File link */
+
+.msg a{
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.msg a:hover{
+    text-decoration: underline;
+}
+
+/* Form */
+
+form{
+    width: 80%;
+    margin: 10px auto 30px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Input */
+
+input[type="text"]{
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* File input */
+
+input[type="file"]{
+    padding: 6px;
+}
+
+/* Button */
+
+button{
+    padding: 10px 20px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #162f6b;
+}
+/* Message box */
+.msg {
+    background: #f1f5ff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Header with dots */
+.msg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 3 dots */
+.dots {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+/* Dropdown menu */
+.menu {
+    position: relative;
+}
+
+.menu-options {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 80px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Delete button */
+.menu-options a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: red;
+}
+
+.menu-options a:hover {
+    background: #f0f0f0;
+}

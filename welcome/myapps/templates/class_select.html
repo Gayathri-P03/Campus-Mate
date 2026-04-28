@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select Class</title>
+<link rel="stylesheet" href="{% static 'css/class_select.css' %}">
+</head>
+
+<body>
+
+<div class="header">Select Class</div>
+
+<div class="class-container">
+
+    <form action="{% url 'staff_assignments' 'A' %}" method="get">
+        <button type="submit" class="class-card">Final CSE A</button>
+    </form>
+
+    <form action="{% url 'staff_assignments' 'B' %}" method="get">
+        <button type="submit" class="class-card">Final CSE B</button>
+    </form>
+
+    <form action="{% url 'staff_assignments' 'C' %}" method="get">
+        <button type="submit" class="class-card">Final CSE C</button>
+    </form>
+
+</div>
+
+</body>
+</html>

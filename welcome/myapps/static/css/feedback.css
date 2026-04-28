@@ -1,0 +1,118 @@
+body{
+    font-family: Arial, sans-serif;
+    background:#eef2f7;
+    margin:0;
+}
+
+.container{
+    width:85%;
+    margin:auto;
+}
+
+h2{
+    text-align:center;
+    padding:20px;
+}
+
+/* Login box */
+
+.login-box{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+
+/* Input */
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-group label{
+    font-weight:bold;
+}
+
+.input-group input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+/* Staff card */
+
+.staff{
+    background:white;
+    padding:20px;
+    margin-bottom:30px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Table alignment FIX */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+td{
+    padding:12px;
+    vertical-align:middle;
+}
+
+/* Question text */
+
+td:first-child{
+    width:70%;
+    font-weight:500;
+}
+
+/* Stars alignment */
+
+td:last-child{
+    text-align:left;
+}
+
+/* Stars */
+
+.star{
+    font-size:26px;
+    cursor:pointer;
+    color:#ccc;
+    margin-right:5px;
+    transition:0.2s;
+}
+
+.star:hover{
+    transform:scale(1.2);
+}
+
+.star.active{
+    color:gold;
+}
+
+/* Button */
+
+.save-btn{
+    display:block;
+    margin:40px auto;
+    padding:12px 40px;
+    font-size:16px;
+    border:none;
+    background:#2e7d32;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#1b5e20;
+}
+.star.active{
+    color:gold;
+    text-shadow:0 0 5px gold;
+}

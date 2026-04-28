@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'css/staff_office.css' %}">
+</head>
+
+<body>
+
+<h2 style="text-align:center;">Staff - Office Chat</h2>
+
+<div class="chat-box">
+
+{% for msg in messages %}
+<div class="msg">
+<b>{{ msg.sender }}:</b> {{ msg.message }}
+
+{% if msg.file %}
+<br>
+<a href="{{ msg.file.url }}" target="_blank">📎 View File</a>
+{% endif %}
+
+</div>
+{% endfor %}
+
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<input type="text" name="message" placeholder="Type message">
+<input type="file" name="file">
+
+<button type="submit">Send</button>
+
+</form>
+
+</body>
+</html>

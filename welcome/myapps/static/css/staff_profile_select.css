@@ -1,0 +1,83 @@
+/* BODY BACKGROUND */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: linear-gradient(135deg, #0f2027, #2c5364);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CONTAINER */
+.container {
+    text-align: center;
+    padding: 50px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* TITLE */
+h1 {
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+/* BUTTON STYLE */
+.btn {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    color: white;
+}
+
+/* BLUE BUTTON */
+.btn-a {
+    background: linear-gradient(45deg, #2196f3, #00c6ff);
+}
+
+.btn-a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #00c6ff;
+}
+
+/* GREEN BUTTON */
+.btn-b {
+    background: linear-gradient(45deg, #00c853, #64dd17);
+}
+
+.btn-b:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #64dd17;
+}
+
+/* DARK ORANGE BUTTON */
+.btn-c {
+    background: linear-gradient(45deg, #ff6f00, #ff8f00);
+}
+
+.btn-c:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff8f00;
+}
+
+/* BUTTON CLICK EFFECT */
+.btn:active {
+    transform: scale(0.95);
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Certificate History</title>
+
+<link rel="stylesheet" href="/static/css/assignment.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>Uploaded Certificates</h1>
+
+<div class="menu">
+
+<a href="/certificate_upload/">Upload Certificate</a>
+
+<a href="/certificate_history/">History</a>
+
+</div>
+
+</div>
+
+
+<div class="form-section">
+
+<h2>Certificate History</h2>
+
+<table border="1" width="100%" cellpadding="10">
+
+<tr>
+
+<th>Student Name</th>
+<th>Register Number</th>
+<th>Year</th>
+<th>Date</th>
+<th>Organization</th>
+<th>File</th>
+
+</tr>
+
+{% for c in certificates %}
+
+<tr>
+
+<td>{{c.student_name}}</td>
+<td>{{c.register_number}}</td>
+<td>{{c.year}}</td>
+<td>{{c.date}}</td>
+<td>{{c.organization}}</td>
+
+<td>
+
+<a href="{{c.certificate_file.url}}" target="_blank">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

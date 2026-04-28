@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>{{ group_name }}</title>
+
+<link rel="stylesheet" href="{% static 'css/student_chat.css' %}">
+
+</head>
+
+<body>
+
+<div class="header">
+{{ group_name }}
+</div>
+
+<div class="chat-box">
+
+{% for msg in messages %}
+
+<div class="message">
+
+<strong>{{ msg.sender }}</strong>
+
+<p>{{ msg.message }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<form method="post" class="chat-input">
+
+{% csrf_token %}
+
+<input type="text" name="message" placeholder="Type message">
+
+<button type="submit">Send</button>
+
+</form>
+
+</body>
+
+</html>

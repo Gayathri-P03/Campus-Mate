@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ group_name }} Chat</title>
+<link rel="stylesheet" href="{% static 'css/group_chat.css' %}">
+</head>
+<body>
+
+<div class="header">{{ group_name }}</div>
+
+<div class="chat-box" id="chatBox">
+
+{% for msg in messages %}
+
+<div class="chat-row {% if msg.sender == 'Staff' %}right{% else %}left{% endif %}">
+
+    <div class="message {% if msg.sender == 'Staff' %}sender{% else %}receiver{% endif %}">
+
+        <div class="msg-info">
+            <strong>{{ msg.sender }}</strong>
+            <span class="msg-time">{{ msg.time }}</span>
+        </div>
+
+        {% if msg.message %}
+            <p>{{ msg.message }}</p>
+        {% endif %}
+
+        {% if msg.file %}
+            <img src="{{ msg.file }}" class="chat-image">
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<form method="post" enctype="multipart/form-data" class="chat-input">
+{% csrf_token %}
+<label for="file-upload" class="plus-btn">➕</label>
+<input id="file-upload" type="file" name="file">
+<input type="text" name="message" placeholder="Type message...">
+<button type="submit">Send</button>
+</form>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    // Auto scroll to bottom
+    var chatBox = document.getElementById("chatBox");
+    if(chatBox){
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Toggle menu
+    const buttons = document.querySelectorAll(".menu-btn");
+    buttons.forEach(btn => {
+        btn.addEventListener("click", function(e){
+            e.stopPropagation();
+            const menu = this.nextElementSibling;
+
+            // Hide all other menus
+            document.querySelectorAll(".menu-content").forEach(m => {
+                if(m !== menu) m.style.display = "none";
+            });
+
+            // Show current menu
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        });
+    });
+
+    // Click outside closes all menus
+    document.addEventListener("click", function(){
+        document.querySelectorAll(".menu-content").forEach(m => m.style.display = "none");
+    });
+
+});
+</script>
+
+</body>
+</html>

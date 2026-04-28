@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Office Login</title>
+
+<link rel="stylesheet" href="/static/css/office.css">
+
+<style>
+
+.login-box{
+width:400px;
+margin:120px auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.login-box h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.login-box input{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border:1px solid #ccc;
+}
+
+.login-box button{
+width:100%;
+padding:10px;
+background:#1a73e8;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+</style>
+
+<script>
+
+function officeLogin(){
+
+let user=document.getElementById("user").value
+let pass=document.getElementById("pass").value
+
+if(user=="office" && pass=="ace123"){
+
+window.location.href="/office_chat/"
+
+}
+else{
+
+alert("Invalid Login")
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h2>🏢 Office Login</h2>
+
+<input type="text" id="user" placeholder="Username">
+
+<input type="password" id="pass" placeholder="Password">
+
+<button onclick="officeLogin()">Login</button>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Staff Chat Groups</title>
+
+<link rel="stylesheet" href="{% static 'css/staff_chat.css' %}">
+
+</head>
+
+<body>
+
+<div class="header">
+Staff Chat Groups
+</div>
+
+<!-- GROUP LIST -->
+
+<div class="group-list">
+
+{% for group in groups %}
+
+<a href="{% url 'group_chat' group %}" class="group">
+
+<div class="group-name">
+{{ group }}
+</div>
+
+</a>
+
+{% endfor %}
+
+</div>
+
+
+<!-- CHAT AREA -->
+
+{% if messages %}
+
+<div class="chat-container">
+
+<div class="chat-header">
+{{ group_name }}
+</div>
+
+<div class="chat-box">
+
+{% for msg in messages %}
+
+<div class="message {% if msg.sender == request.session.staff_name %}staff-msg{% else %}student-msg{% endif %}">
+
+<strong>{{ msg.sender }}</strong>
+
+<p>{{ msg.message }}</p>
+
+<span class="time">{{ msg.time }}</span>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<!-- MESSAGE SEND FORM -->
+
+<form method="post" class="chat-input">
+
+{% csrf_token %}
+
+<input type="text" name="message" placeholder="Type message..." required>
+
+<button type="submit">Send</button>
+
+</form>
+
+</div>
+
+{% endif %}
+
+</body>
+</html>

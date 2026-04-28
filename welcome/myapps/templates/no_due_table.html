@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>No Due Verification</title>
+
+<link rel="stylesheet" href="/static/css/no_due_form.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>No Due Staff Verification</h1>
+
+<div class="menu">
+
+<a href="/no_due_form/">Back</a>
+
+</div>
+
+</div>
+
+
+<div class="form-section">
+
+<h2>Staff Approval</h2>
+
+<table border="1" width="100%" cellpadding="10">
+
+<tr>
+
+<th>S.No</th>
+<th>Subject Code</th>
+<th>Subject Name</th>
+<th>Staff Name</th>
+<th>Staff Verification</th>
+
+</tr>
+
+<tr>
+
+<td>1</td>
+<td>CS801</td>
+<td>Artificial Intelligence</td>
+<td>Mrs. Xavier Mary</td>
+<td>
+
+{% for v in verifications %}
+    {% if v.subject == "Xavier Mary" %}
+        {% if v.status == "Verified" %}
+            <span style="color:green;font-weight:bold;">✔ Verified</span>
+        {% else %}
+            <span style="color:red;font-weight:bold;">✘ Not Verified</span>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+<td>CS802</td>
+<td>Machine Learning</td>
+<td>Mr. Vinoth Kumar</td>
+<td>
+
+{% for v in verifications %}
+    {% if v.subject == "Vinoth Kumar" %}
+        {% if v.status == "Verified" %}
+            <span style="color:green;font-weight:bold;">✔ Verified</span>
+        {% else %}
+            <span style="color:red;font-weight:bold;">✘ Not Verified</span>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+<td>CS803</td>
+<td>Cloud Computing</td>
+<td>Mrs. Dhanalakshmi</td>
+<td>
+
+{% for v in verifications %}
+    {% if v.subject == "Dhanalakshmi" %}
+        {% if v.status == "Verified" %}
+            <span style="color:green;font-weight:bold;">✔ Verified</span>
+        {% else %}
+            <span style="color:red;font-weight:bold;">✘ Not Verified</span>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>4</td>
+<td>CS804</td>
+<td>Big Data</td>
+<td>Mr. Vikram</td>
+<td>
+
+{% for v in verifications %}
+    {% if v.subject == "Vikram" %}
+        {% if v.status == "Verified" %}
+            <span style="color:green;font-weight:bold;">✔ Verified</span>
+        {% else %}
+            <span style="color:red;font-weight:bold;">✘ Not Verified</span>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+</td>
+</tr>
+
+<tr>
+
+<td>5</td>
+<td>CS805</td>
+<td>Cyber Security</td>
+<td>Mrs. Meena</td>
+<td>
+
+{% for v in verifications %}
+    {% if v.subject == "Meena" %}
+        {% if v.status == "Verified" %}
+            <span style="color:green;font-weight:bold;">✔ Verified</span>
+        {% else %}
+            <span style="color:red;font-weight:bold;">✘ Not Verified</span>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+<!-- ✅ NEW SECTION -->
+
+<!-- OFFICE APPROVAL SECTION -->
+
+<div class="form-section">
+
+<h2>Office Approval</h2>
+
+<table width="100%" cellpadding="15">
+
+<tr>
+<td style="font-weight:bold;">Office</td>
+<td>
+    <div style="width:200px; height:60px; border:2px solid black;"></div>
+</td>
+</tr>
+
+<tr>
+<td style="font-weight:bold;">Superintendent</td>
+<td>
+    <div style="width:200px; height:60px; border:2px solid black;"></div>
+</td>
+</tr>
+
+<tr>
+<td style="font-weight:bold;">Department HOD</td>
+<td>
+    <div style="width:200px; height:60px; border:2px solid black;"></div>
+</td>
+</tr>
+
+<tr>
+<td style="font-weight:bold;">Principal</td>
+<td>
+    <div style="width:200px; height:60px; border:2px solid black;"></div>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+
+</body>
+</html>

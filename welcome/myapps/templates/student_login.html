@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Student Login</title>
+
+<link rel="stylesheet" href="{% static 'css/student_login.css' %}">
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <h2>College Student Login</h2>
+
+    <!-- Error Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <p class="error-msg">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Login Form -->
+    <form method="post" class="login-form">
+
+        {% csrf_token %}
+
+        <div class="input-group">
+            <label>Student Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="input-group">
+            <label>Register Number</label>
+            <input type="text" name="reg_no" placeholder="Enter Register Number" required>
+        </div>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

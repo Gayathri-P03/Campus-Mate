@@ -1,0 +1,73 @@
+body{
+    font-family: Arial, sans-serif;
+    background: #eef3fb;
+    margin: 0;
+}
+
+/* Header */
+
+h2{
+    text-align: center;
+    padding: 20px;
+    background: #1e3a8a;
+    color: white;
+    margin: 0;
+}
+
+/* Container */
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    gap: 40px;
+}
+
+/* Base Card */
+
+.card{
+    width: 220px;
+    height: 130px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* Different Colors for Each Box */
+
+.card.a{
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);   /* Blue */
+}
+
+.card.b{
+    background: linear-gradient(135deg, #16a34a, #14532d);   /* Green */
+}
+
+.card.c{
+    background: linear-gradient(135deg, #f59e0b, #b45309);   /* Orange */
+}
+
+/* Hover Effect */
+
+.card:hover{
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+    .container{
+        flex-direction: column;
+        gap: 20px;
+    }
+}

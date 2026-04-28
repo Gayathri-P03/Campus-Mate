@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>No Due Verification</title>
+
+<link rel="stylesheet" href="{% static 'css/staff_no_due.css' %}">
+
+</head>
+
+<body>
+
+<h1>Student Profile Verification - {{ class_name }}</h1>
+
+<div class="form-section">
+<table border="1">
+
+<tr>
+<th>S.No</th>
+<th>Name</th>
+<th>Register No</th>
+<th>Verification</th>
+</tr>
+
+{% for student in students %}
+
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{ student.NAME }}</td>
+<td>{{ student.REGISTER_NUMBER }}</td>
+
+<td>
+<form method="post">
+{% csrf_token %}
+
+<input type="hidden" name="student_NAME" value="{{ student.NAME }}">
+<input type="hidden" name="REGISTER_NUMBER" value="{{ student.REGISTER_NUMBER }}">
+
+<select name="status" class="status-dropdown"
+        onchange="updateColor(this); this.form.submit()">
+
+<option value="">Select</option>
+  <option value="Verified"
+{% for v in verifications %}
+{% if v.register_number == student.REGISTER_NUMBER and v.status == "Verified" %}
+selected
+{% endif %}
+{% endfor %}
+>Verified</option>
+
+<option value="Not Verified"
+{% for v in verifications %}
+{% if v.register_number == student.REGISTER_NUMBER and v.status == "Not Verified" %}
+selected
+{% endif %}
+{% endfor %}
+>Not Verified</option>
+
+</select>
+
+</form>
+</td>
+
+</tr>
+
+{% endfor %}
+</table>
+
+
+</div>
+
+<script>
+function updateColor(select){
+
+    // remove old classes
+    select.classList.remove("verified", "not-verified");
+
+    if(select.value === "Verified"){
+        select.classList.add("verified");
+    }
+    else if(select.value === "Not Verified"){
+        select.classList.add("not-verified");
+    }
+}
+
+// APPLY ON PAGE LOAD
+window.onload = function(){
+    document.querySelectorAll(".status-dropdown").forEach(function(select){
+        updateColor(select);
+    });
+}
+</script>
+
+</body>
+</html>

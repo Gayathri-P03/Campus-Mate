@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Syllabus Selection</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#e9f2ff;
+}
+
+.container{
+width:70%;
+margin:auto;
+margin-top:60px;
+text-align:center;
+}
+
+h1{
+color:#004aad;
+margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns: repeat(2,1fr);
+gap:25px;
+}
+
+.btn{
+padding:20px;
+background:#004aad;
+color:white;
+font-size:18px;
+font-weight:bold;
+border-radius:8px;
+text-decoration:none;
+}
+
+.btn:hover{
+background:#003080;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Select Subject Syllabus</h1>
+
+<div class="grid">
+
+<a href="{% url 'view_syllabus' 'ai' %}" class="btn">Artificial Intelligence</a>
+
+<a href="{% url 'view_syllabus' 'ml' %}" class="btn">Machine Learning</a>
+
+<a href="{% url 'view_syllabus' 'cloud' %}" class="btn">Cloud Computing</a>
+
+<a href="{% url 'view_syllabus' 'bigdata' %}" class="btn">Big Data</a>
+
+<a href="{% url 'view_syllabus' 'cyber' %}" class="btn">Cyber Security</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

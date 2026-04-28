@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Assignment Upload</title>
+
+<link rel="stylesheet" href="/static/css/assignment.css">
+
+<script>
+
+function validateForm(){
+
+let file=document.getElementById("file").value
+
+if(file==""){
+alert("Upload file")
+return false
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>Student Assignment Portal</h1>
+
+<div class="menu">
+
+<a href="/assignment_upload/">Upload Assignment</a>
+
+<a href="/assignment_history/">History</a>
+
+</div>
+
+</div>
+
+
+<div class="form-section">
+
+<h2>Upload Assignment</h2>
+
+<form method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+
+{% csrf_token %}
+<select name="section" required>
+    <option value="">Select Section</option>
+    <option value="A">Final CSE A</option>
+    <option value="B">Final CSE B</option>
+    <option value="C">Final CSE C</option>
+</select>
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Student Name</label>
+
+<input type="text" name="student_name" required>
+
+</div>
+
+<div class="input-group">
+
+<label>Register Number</label>
+
+<input type="text" name="register_number" required>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Year</label>
+
+<select name="year">
+
+<option>1st Year</option>
+<option>2nd Year</option>
+<option>3rd Year</option>
+<option>Final Year</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<label>Date</label>
+
+<input type="date" name="date">
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Subject</label>
+
+<input type="text" name="subject">
+
+</div>
+
+<div class="input-group">
+
+<label>Assignment Number</label>
+
+<select name="assignment_no">
+
+<option>Assignment 1</option>
+<option>Assignment 2</option>
+<option>Assignment 3</option>
+<option>Assignment 4</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="upload-area">
+
+<label>Upload File (PDF / Image / Word)</label>
+
+<input type="file" id="file" name="assignment_file">
+
+</div>
+
+
+<button class="upload-btn">Upload Assignment</button>
+
+
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{{ subject }} Syllabus</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#e9f2ff;
+}
+
+.container{
+width:80%;
+margin:auto;
+margin-top:30px;
+text-align:center;
+}
+
+h2{
+color:#004aad;
+margin-bottom:20px;
+}
+
+iframe{
+width:100%;
+height:600px;
+border:2px solid #004aad;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>{{ subject }} Syllabus</h2>
+
+<iframe src="{% static 'syllabus/' %}{{ file }}"></iframe>
+
+</div>
+
+</body>
+</html>

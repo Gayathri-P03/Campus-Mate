@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Assignments</title>
+    <link rel="stylesheet" href="{% static 'css/staff_assignments.css' %}">
+</head>
+
+<body>
+
+<h2>Final CSE {{ section }} - Assignments</h2>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+    <th>Name</th>
+    <th>Register No</th>
+    <th>Year</th>
+    <th>Subject</th>
+    <th>Date</th>
+
+    <th>Assignment 1</th>
+    <th>View</th>
+
+    <th>Assignment 2</th>
+    <th>View</th>
+
+    <th>Assignment 3</th>
+    <th>View</th>
+
+    <th>Assignment 4</th>
+    <th>View</th>
+</tr>
+
+{% for s in students %}
+<tr>
+    <td>{{ s.name }}</td>
+    <td>{{ s.reg }}</td>
+    <td>{{ s.year }}</td>
+    <td>{{ s.subject }}</td>
+    <td>{{ s.date }}</td>
+
+    <!-- Assignment 1 -->
+    <td>
+    {% if s.a1 %}
+        <span class="tick">✔</span>
+    {% else %}
+        <span class="not-uploaded">Not Uploaded</span>
+    {% endif %}
+    </td>
+    <td>
+    {% if s.a1 %}
+        <a href="{{ s.a1.url }}" target="_blank" class="view-btn">View</a>
+    {% else %}
+        <span class="no-file">No File</span>
+    {% endif %}
+    </td>
+
+    <!-- Assignment 2 -->
+    <td>
+    {% if s.a2 %}
+        <span class="tick">✔</span>
+    {% else %}
+        <span class="not-uploaded">Not Uploaded</span>
+    {% endif %}
+    </td>
+    <td>
+    {% if s.a2 %}
+        <a href="{{ s.a2.url }}" target="_blank" class="view-btn">View</a>
+    {% else %}
+        <span class="no-file">No File</span>
+    {% endif %}
+    </td>
+
+    <!-- Assignment 3 -->
+    <td>
+    {% if s.a3 %}
+        <span class="tick">✔</span>
+    {% else %}
+        <span class="not-uploaded">Not Uploaded</span>
+    {% endif %}
+    </td>
+    <td>
+    {% if s.a3 %}
+        <a href="{{ s.a3.url }}" target="_blank" class="view-btn">View</a>
+    {% else %}
+        <span class="no-file">No File</span>
+    {% endif %}
+    </td>
+
+    <!-- Assignment 4 -->
+    <td>
+    {% if s.a4 %}
+        <span class="tick">✔</span>
+    {% else %}
+        <span class="not-uploaded">Not Uploaded</span>
+    {% endif %}
+    </td>
+    <td>
+    {% if s.a4 %}
+        <a href="{{ s.a4.url }}" target="_blank" class="view-btn">View</a>
+    {% else %}
+        <span class="no-file">No File</span>
+    {% endif %}
+    </td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#e3f2fd;
+}
+
+/* Heading */
+
+h2{
+    text-align:center;
+    padding:20px;
+    color:#0d47a1;
+}
+
+/* Container */
+
+.table-container{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Table */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#1976d2;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:10px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+/* Hover */
+
+tr:hover{
+    background:#f1f8ff;
+}
+
+/* Button */
+
+a{
+    text-decoration:none;
+    background:#42a5f5;
+    color:white;
+    padding:6px 12px;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+a:hover{
+    background:#1565c0;
+}
+/* TABLE CONTAINER */
+.table-container{
+width:90%;
+margin:auto;
+margin-top:30px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+/* HEADER */
+table th{
+background:linear-gradient(90deg,#1976d2,#42a5f5);
+color:white;
+padding:12px;
+text-align:center;
+}
+
+/* ROWS */
+table td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+table tr:nth-child(even){
+background:#f5f9ff;
+}
+
+table tr:hover{
+background:#e3f2fd;
+}
+
+/* STATUS */
+.status-yes{
+color:green;
+font-weight:bold;
+}
+
+.status-no{
+color:red;
+font-weight:bold;
+}
+
+/* VIEW BUTTON */
+.view-btn{
+padding:5px 12px;
+background:#1976d2;
+color:white;
+text-decoration:none;
+border-radius:5px;
+margin-left:5px;
+}
+
+.view-btn:hover{
+background:#0d47a1;
+}
+
+/* DISABLED */
+.disabled-btn{
+padding:5px 12px;
+background:#ccc;
+color:#666;
+border:none;
+border-radius:5px;
+}
+.tick {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.not-uploaded {
+    color: red;
+    font-weight: 500;
+}
+
+.no-file {
+    color: gray;
+}
+
+.view-btn {
+    background: #1976d2;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.view-btn:hover {
+    background: #0d47a1;
+}

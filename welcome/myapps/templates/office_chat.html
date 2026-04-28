@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Office Chat</title>
+
+<link rel="stylesheet" href="/static/css/office_chat.css">
+
+<script>
+
+function sendMessage(){
+
+let input=document.getElementById("msg")
+let chat=document.getElementById("chatBox")
+
+if(input.value==""){
+alert("Enter message")
+return
+}
+
+let div=document.createElement("div")
+div.className="message office"
+div.innerText="Office: "+input.value
+
+chat.appendChild(div)
+
+input.value=""
+
+chat.scrollTop=chat.scrollHeight
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>🏢 Office Communication Panel</h2>
+
+</div>
+
+
+<div class="chat-container">
+
+<div class="chat-box" id="chatBox">
+{% for msg in messages %}
+<div class="message">
+<b>{{ msg.sender }}</b> : {{ msg.message }}
+
+<br>
+
+{% if msg.file %}
+<a href="{{ msg.file.url }}" target="_blank">📎 Open File</a>
+{% endif %}
+
+</div>
+{% endfor %}
+</div>
+<form method="POST" enctype="multipart/form-data" class="chat-input">
+{% csrf_token %}
+
+<!-- Message Box -->
+<input type="text" name="message" placeholder="Type message..." class="msg-box">
+
+<button type="submit" class = "send-btn">Send</button>
+
+<br><br>
+
+<!-- File Upload -->
+<input type="file" name="file" class="file-box">
+
+<button type="submit" class="upload-btn">Upload File</button>
+
+
+
+</form>
+
+
+
+</div>
+
+</body>
+</html>

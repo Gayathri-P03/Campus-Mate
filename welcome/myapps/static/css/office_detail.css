@@ -1,0 +1,24 @@
+.status-dropdown{
+    padding:8px;
+    border-radius:5px;
+}
+/* BADGE STYLE */
+.status-badge{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* GREEN BADGE */
+.badge-verified{
+    background:linear-gradient(90deg,#16a34a,#22c55e);
+    color:white;
+}
+
+/* RED BADGE */
+.badge-not-verified{
+    background:linear-gradient(90deg,#dc2626,#ef4444);
+    color:white;
+}

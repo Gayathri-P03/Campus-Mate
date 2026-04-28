@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Bot Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+</head>
+<body>
+
+<div class="chat-container">
+
+    <div class="chat-header">
+        <h1>🎓 College Location Bot</h1>
+        <a href="{% url 'logout' %}" class="logout">Logout</a>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+
+        {% for msg in chat_history %}
+
+            <!-- USER MESSAGE -->
+            <div class="chat-row user-row">
+                <div class="message user-msg">
+                    {{ msg.user }}
+
+                    <!-- 3-dot menu -->
+                    <div class="menu">
+                        <span class="menu-btn">⋮</span>
+                        <div class="menu-content">
+                            {% if msg.file %}
+                                <a href="{{ msg.file }}" download>Download</a>
+                                <a href="#">Share</a>
+                            {% endif %}
+                            <a href="#">Delete</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- BOT MESSAGE -->
+            <div class="chat-row bot-row">
+                <div class="message bot-msg">
+                    {{ msg.bot }}
+
+                    <!-- 3-dot menu -->
+                    <div class="menu">
+                        <span class="menu-btn">⋮</span>
+                        <div class="menu-content">
+                            {% if msg.file %}
+                                <a href="{{ msg.file }}" download>Download</a>
+                                <a href="#">Share</a>
+                            {% endif %}
+                            <a href="#">Delete</a>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="{% url 'map' %}" class="map-icon">📍</a>
+            </div>
+
+        {% empty %}
+            <div class="chat-row bot-row">
+                <div class="message bot-msg">
+                    Need directions in the college? Just ask me.
+                    <div class="menu">
+                        <span class="menu-btn">⋮</span>
+                        <div class="menu-content">
+                            <a href="#">Share</a>
+                            <a href="#">Download</a>
+                            <a href="#">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'map' %}" class="map-icon">📍</a>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <form method="post" class="chat-input">
+        {% csrf_token %}
+        <input type="text" name="question" placeholder="Ask your question..." required>
+        <button type="submit">Send</button>
+    </form>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const chatBox = document.getElementById("chatBox");
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // Show menu
+    const buttons = document.querySelectorAll(".menu-btn");
+    buttons.forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const menu = this.nextElementSibling;
+
+            // Hide all other menus
+            document.querySelectorAll(".menu-content").forEach(m => {
+                if (m !== menu) m.style.display = "none";
+            });
+
+            // Show current menu
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        });
+    });
+
+    // Close menu on clicking outside
+    document.addEventListener("click", function() {
+        document.querySelectorAll(".menu-content").forEach(m => m.style.display = "none");
+    });
+});
+</script>
+
+</body>
+</html>

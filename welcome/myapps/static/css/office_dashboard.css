@@ -1,0 +1,25 @@
+.button-group{
+    text-align:center;
+    margin-top:40px;
+}
+
+.button-group a{
+    display:block;
+    margin:20px auto;
+    width:200px;
+}
+
+.button-group button{
+    width:100%;
+    padding:15px;
+    font-size:16px;
+    border:none;
+    background:#1976d2;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.button-group button:hover{
+    background:#0d47a1;
+}

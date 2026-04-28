@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Office Status</title>
+
+<style>
+.status-box{
+padding:8px 15px;
+border-radius:20px;
+font-weight:bold;
+color:white;
+}
+
+.verified{
+background:#28a745;
+}
+
+.notverified{
+background:#dc3545;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Office Verification Status</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>Staff</th>
+<th>Status</th>
+</tr>
+
+{% for v in verifications %}
+
+<tr>
+<td>{{ v.subject }}</td>
+
+<td>
+{% if v.status == "Verified" %}
+<span class="status-box verified">Verified</span>
+{% else %}
+<span class="status-box notverified">Not Verified</span>
+{% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<h3>Office Final Approval</h3>
+
+{% if verifications.0.office_status == "Verified" %} <span class="status-box verified">Verified</span>
+{% else %} <span class="status-box notverified">Not Verified</span>
+{% endif %}
+
+</body>
+</html>

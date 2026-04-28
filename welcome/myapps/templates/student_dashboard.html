@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/student_dashboard.css' %}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <h2 class="logo">Student Panel</h2>
+
+        <ul class="menu">
+
+            <li><a href="{% url 'student_chat' %}">💬 Chat</a></li>
+
+            <li><a href="{% url 'student_result' %}">📊 Result</a></li>
+
+            <li><a href="{% url 'certificate_upload' %}">📤 Certificate Upload</a></li>
+
+            <li><a href="{% url 'assignment_upload' %}">📝 Assignment Upload</a></li>
+
+            <li><a href="{% url 'feedback' %}">⭐ Feedback</a></li>
+
+            <li>
+                <a href="{% url 'student_office_status' %}">🏢 Office</a>
+            </li>
+
+            <li><a href="{% url 'timetable' %}">📅 Timetable</a></li>
+
+            <li><a href="{% url 'map' %}">📍 Directions</a></li>
+
+            <li><a href="{% url 'no_due_form' %}">📄 No DUE Form</a></li>
+
+            <li><a href="{% url 'student_profile' %}">👤 Student Profile Data</a></li>
+
+            <li><a href="{% url 'logout' %}">🔐 Logout</a></li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="header">
+
+            <h1>Welcome {{ request.session.student_name }}</h1>
+
+            <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+
+        </div>
+
+        <div class="content">
+
+            <h2>Student Dashboard</h2>
+
+            <p>Select an option from the sidebar.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

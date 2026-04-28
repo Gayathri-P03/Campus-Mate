@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/staff_dashboard.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <h2 class="logo">Staff Panel</h2>
+
+        <ul class="menu">
+
+            <li><a href="{% url 'staff_chat' %}">💬 Chat</a></li>
+            <li><a href="{% url 'student_result' %}">📊 Result</a></li>
+            <li><a href="{% url 'staff_certificates' %}">📄 Uploaded Certificate</a></li>
+            <li><a href="{% url 'select_class' %}">📘 Uploaded Assignment</a></li>
+            <li><a href="{% url 'staff_feedback' %}">⭐ Feedback Review</a></li>
+            <li><a href="{% url 'syllabus_selection' %}">📚 Syllabus</a></li>
+            <li><a href="{% url 'staff_timetable' %}">📅 Timetable</a></li>
+            <li><a href="{% url 'map' %}">🧭 Directions</a></li>
+            <li><a href="{% url 'staff_no_due_select' %}">📋 No Due Verification</a></li>
+            <li><a href="{% url 'staff_profile_select' %}">👤 Student Profile Verification</a></li>
+            <li><a href="{% url 'login' %}">🚪 Logout</a></li>
+
+        </ul>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="header">
+            <h1>Welcome Staff</h1>
+        </div>
+
+        <div class="content">
+            <h2>Dashboard</h2>
+            <p>Select an option from the sidebar.</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

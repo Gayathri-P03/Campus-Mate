@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students List</title>
+
+    <link rel="stylesheet" href="{% static 'css/office_common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/office_students.css' %}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Final CSE {{ class_name }} - Students</h1>
+</div>
+
+<div class="form-section">
+
+<table>
+
+<tr>
+<th>S.No</th>
+<th>Student Name</th>
+<th>Register Number</th>
+<th>Action</th>
+</tr>
+
+{% for s in students %}
+
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{ s.name }}</td>
+<td>{{ s.reg }}</td>
+
+<td>
+    {% if s.is_verified %}
+        <a href="/office-student/{{ s.reg }}/">
+            <button class="btn" style="background:green;color:white;">
+                View
+            </button>
+        </a>
+    {% else %}
+        <button class="btn" style="background:gray;color:white;cursor:not-allowed;" disabled>
+            Pending
+        </button>
+    {% endif %}
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+<td colspan="4" style="text-align:center;">
+No Students Found
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

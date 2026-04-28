@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Share Message</title>
+<style>
+
+body{
+font-family:Arial;
+padding:30px;
+}
+
+.group-box{
+border:1px solid #ccc;
+padding:15px;
+margin-bottom:10px;
+border-radius:6px;
+}
+
+button{
+padding:10px 20px;
+background:#28a745;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Select Groups to Share</h2>
+
+<form method="post">
+
+{% csrf_token %}
+
+{% for g in groups %}
+
+<div class="group-box">
+<label>
+<input type="checkbox" name="groups" value="{{ g }}">
+{{ g }}
+</label>
+</div>
+
+{% endfor %}
+
+<button type="submit">Share Message</button>
+
+</form>
+
+</body>
+</html>

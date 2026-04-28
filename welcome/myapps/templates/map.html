@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College Floor Map</title>
+{% load static %}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+}
+
+#search-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#roomSearch {
+    padding: 5px;
+    font-size: 14px;
+}
+
+#searchBtn {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div id="search-container">
+    <input type="text" id="roomSearch" placeholder="Enter Room Name">
+    <button id="searchBtn">Search</button>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+// Initialize map
+var map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: -2
+});
+
+// Map bounds
+var bounds = [[0,0], [900,1600]];
+
+// Load floor plan
+var image = L.imageOverlay("{% static 'images/floor_map.png' %}", bounds).addTo(map);
+map.fitBounds(bounds);
+
+// Entrance
+var entrance = [175, 630];
+L.marker(entrance).addTo(map).bindTooltip("Entrance",{permanent:true});
+
+// Rooms
+var rooms = {
+    "IV - B": [180, 220],
+    "IV - A": [180, 320],
+    "Room 114": [180, 430],
+    "Staff Room 1": [180, 540],
+    "IT Lab" : [200,120],
+    "Staff Room 2": [300, 120],
+    "IV - C": [400, 120],
+    "Room 120": [500, 120],
+    "III - A": [600, 120],
+    "III - B": [700, 120],
+    "Boys RestRoom":[820,150],
+    "Exam Room": [700, 270],
+    "III - C": [700, 340],
+    "II - A": [700, 420],
+    "II - B": [700, 495],
+    "II - C": [700, 560],
+    "MCA Lab": [700, 720],
+    "ME I Year": [700, 790],
+    "Staff Room 3": [700, 850],
+    "AC Room":[700,990],
+    "Girls Restroom":[700,1110],
+    "CB Dpt":[700,1150],
+    "Aero Lab":[700,1210],
+    "Chemistry DPT": [360, 680],
+    "Staff Room 4": [440, 680],
+    "CSE HOD Room": [520, 680],
+    "EEE DPT": [360, 820],
+    "Operator Room": [440, 820],
+    "Lab 1": [520, 820],
+    "Lab 3": [360, 730],
+    "Lab 2": [280, 1470],
+    "Seminar Hall": [520, 1470],
+    "R&D Lab": [180,980],
+    "EEE Lab 1": [180, 1160],
+    "EEE Lab 2": [180, 1260],
+    "EEE Lab 3": [180, 1345]
+};
+
+// Add markers
+for(const [name, coord] of Object.entries(rooms)){
+    L.marker(coord).addTo(map).bindTooltip(name,{permanent:true});
+}
+
+// Blue path polyline
+var route = L.polyline([], {color:"blue", weight:6}).addTo(map);
+
+// Corridor paths
+var paths = {
+
+    "Room 114": [
+        [175,630],
+        [220,630],
+        [220,540],
+        [220,430],
+        [180,430]
+    ],
+    "IV - A": [
+        [175,630],
+        [220,630],
+        [220,540],
+        [220,320],
+        [180,320]
+    ],
+    "IV - B": [
+        [175,630],
+        [220,630],
+        [220,540],
+        [220,220],
+        [180,220]
+    ],
+    "IT Lab": [
+    [175,630],
+    [220,630],
+    [220,540],
+    [220,120],
+    [200,120]
+    ],
+    "Staff Room 2": [
+    [175,630],
+    [220,630],
+    [220,200],
+    [300,200],
+    [300,120]
+    ],
+    "IV - C": [
+    [175,630],
+    [220,630],
+    [220,200],
+    [400,200],
+    [400,120]
+    ],
+    "Room 120":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [500,200],
+    [500,120]
+    ],
+    "III - A":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [600,200],
+    [600,120]
+    ],
+    "III - B":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [700,200],
+    [700,120]
+    ],
+    "Boys RestRoom":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [820,200],
+    [820,150]
+    ],
+    "Chemistry DPT": [
+    [175,630],
+    [360,630],
+    [360,680]
+    ],
+   "Staff Room 4": [
+    [175,630],
+    [360,630],
+    [440,630],
+    [440,680]
+    ],
+    "CSE HOD Room":[
+    [175,630],
+    [360,630],
+    [520,630],
+    [520,680]
+    ],
+    "Exam Room": [
+    [175,630],
+    [220,630],
+    [220,200],
+    [600,200],
+    [600,270],
+    [700,270]
+    ],
+    "III - C":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [600,200],
+    [600,340],
+    [700,340]
+    ],
+    "II - A":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [600,200],
+    [600,420],
+    [700,420]
+    ],
+    "II - B":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [600,200],
+    [600,495],
+    [700,495]
+    ],
+    "II - C":[
+    [175,630],
+    [220,630],
+    [220,200],
+    [600,200],
+    [600,560],
+    [700,560]
+    ],
+    "Lab 3":[
+    [175,630],
+	[220,730],
+	[360,730],
+    ],
+    "EEE DPT":
+    [
+    [175,630],
+    [250,820],
+    [360, 820]
+    ],
+    "MCA Lab":
+     [
+     [175,630],
+     [600,630],
+     [600,720],
+     [700,720]
+     ],
+     "ME I Year":
+     [
+     [175,630],
+     [600,630],
+     [600,790],
+     [700,790]
+     ],
+     "Staff Room 3":
+      [
+      [175,630],
+      [600,630],
+      [600,850],
+      [700,850]
+      ],
+       "Operator Room":
+       [
+       [175,630],
+       [270,920],
+       [300,920],
+       [440,920],
+       [440,820]
+       ],
+       "Lab 1":
+        [
+        [175,630],
+        [270,920],
+        [300,920],
+        [520,920],
+        [520,820]
+        ],
+        "AC Room":
+        [
+        [175,630],
+        [270,920],
+        [300,920],
+        [700,920],
+        [700,990]
+        ],
+        "Girls Restroom":
+        [
+        [175,630],
+        [270,920],
+        [300,920],
+        [600,920],
+        [600,1110],
+        [700,1110]
+        ],
+        "CB Dpt":
+        [
+        [175,630],
+        [270,920],
+        [300,920],
+        [600,920],
+        [600,1150],
+        [700,1150]
+        ],
+        "Aero Lab":
+        [
+        [175,630],
+        [270,920],
+        [300,920],
+        [600,920],
+        [600,1210],
+        [700,1210]
+        ],
+        "R&D Lab":
+        [
+        [175,630],
+        [250,630],
+        [250,980],
+        [180,980],
+        ],
+        "EEE Lab 1":
+        [
+        [175,630],
+        [250,630],
+        [250,1160],
+        [180,1160],
+        ],
+        "EEE Lab 2":
+        [
+        [175,630],
+        [250,630],
+        [250,1260],
+        [180,1260]
+        ],
+        "EEE Lab 3":
+         [
+         [175,630],
+         [250,630],
+         [250,1345],
+         [180,1345]
+         ],
+         "Lab 2":
+         [
+         [175,630],
+         [250,630],
+         [250,1470],
+         [280,1470]
+         ],
+         "Seminar Hall":
+         [
+         [175,630],
+         [250,630],
+         [210,1430],
+         [520,1430],
+         [520,1470]
+         ]
+
+
+};
+
+// Draw path function
+function drawRoute(userInput){
+
+    var input = userInput.toLowerCase().trim();
+
+    var matchedRoom = null;
+
+    for(const roomName in rooms){
+
+        var key = roomName.toLowerCase();
+
+        if(input === key){
+            matchedRoom = roomName;
+            break;
+        }
+
+    }
+
+    if(!matchedRoom){
+        alert("Room not found");
+        return;
+    }
+
+    route.setLatLngs([]);
+
+    if(paths[matchedRoom]){
+        route.setLatLngs(paths[matchedRoom]);
+    }
+    else{
+        route.setLatLngs([entrance, rooms[matchedRoom]]);
+    }
+
+    map.fitBounds(route.getBounds(), {padding:[50,50]});
+
+    document.getElementById("roomSearch").value = matchedRoom;
+
+}
+// Search button
+document.getElementById("searchBtn").addEventListener("click", function(){
+    var room = document.getElementById("roomSearch").value.trim();
+    drawRoute(room);
+});
+
+</script>
+
+</body>
+</html>

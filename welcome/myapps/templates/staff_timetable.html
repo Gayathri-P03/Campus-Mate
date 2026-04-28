@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Timetable</title>
+    <link rel="stylesheet" href="{% static 'css/staff_timetable.css' %}">
+</head>
+
+<body>
+
+<h2 style="text-align:center;">Select Class Timetable</h2>
+
+<div style="text-align:center; margin-top:50px;">
+
+    <div class="container">
+
+    <a href="{% url 'cse_a' %}" class="card a">
+        Final CSE A
+    </a>
+
+    <a href="{% url 'cse_b' %}" class="card b">
+        Final CSE B
+    </a>
+
+    <a href="{% url 'cse_c' %}" class="card c">
+        Final CSE C
+    </a>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Certificate Upload</title>
+
+<link rel="stylesheet" href="/static/css/assignment.css">
+
+<script>
+
+function validateForm(){
+
+let name=document.getElementById("name").value
+let reg=document.getElementById("reg").value
+let year=document.getElementById("year").value
+let date=document.getElementById("date").value
+let org=document.getElementById("org").value
+let file=document.getElementById("file").value
+
+if(name=="" || reg=="" || year=="" || date=="" || org=="" || file==""){
+
+alert("Fill all column or upload the file")
+
+return false
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>Certificate Upload Portal</h1>
+
+<div class="menu">
+
+<a href="/certificate_upload/">Upload Certificate</a>
+
+<a href="/certificate_history/">History</a>
+
+</div>
+
+</div>
+
+
+<div class="form-section">
+
+<h2>Upload Certificate</h2>
+
+<form method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+
+{% csrf_token %}
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Student Name</label>
+
+<input type="text" id="name" name="student_name">
+
+</div>
+
+<div class="input-group">
+
+<label>Register Number</label>
+
+<input type="text" id="reg" name="register_number">
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Year</label>
+
+<select id="year" name="year">
+
+<option value="">Select</option>
+<option>1st Year</option>
+<option>2nd Year</option>
+<option>3rd Year</option>
+<option>Final Year</option>
+
+</select>
+
+</div>
+
+<div class="input-group">
+
+<label>Date</label>
+
+<input type="date" id="date" name="date">
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Issuing Organization Name</label>
+
+<input type="text" id="org" name="organization">
+
+</div>
+
+</div>
+
+
+<div class="upload-area">
+
+<label>Upload Certificate</label>
+
+<input type="file" id="file" name="certificate_file">
+
+</div>
+
+
+<button class="upload-btn">Upload Certificate</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

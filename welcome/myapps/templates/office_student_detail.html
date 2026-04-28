@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>No Due Details</title>
+
+    <link rel="stylesheet" href="{% static 'css/office_common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/office_detail.css' %}">
+
+    <style>
+        /* ✅ STATUS BADGES */
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .badge-verified {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .badge-not-verified {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* ✅ DROPDOWN STYLE */
+        .status-dropdown {
+            padding: 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 2px solid #ccc;
+        }
+
+        .status-dropdown.verified {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .status-dropdown.not-verified {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* disabled look */
+        .status-dropdown:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* save button */
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>No Due Details - {{ reg }}</h1>
+</div>
+
+<!-- ✅ STAFF VERIFICATION TABLE -->
+
+<div class="form-section">
+
+<table>
+
+<tr>
+<th>Staff</th>
+<th>Status</th>
+</tr>
+
+{% for v in verifications %}
+
+<tr>
+<td>{{ v.subject }}</td>
+
+<td>
+    {% if v.status == "Verified" %}
+        <span class="status-badge badge-verified">✔ Verified</span>
+    {% else %}
+        <span class="status-badge badge-not-verified">✘ Not Verified</span>
+    {% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+<!-- ✅ OFFICE APPROVAL SECTION -->
+
+<div class="form-section">
+
+<form method="post">
+{% csrf_token %}
+
+<h2>Office Approval</h2>
+
+<table width="100%" cellpadding="15">
+
+<tr>
+<td style="font-weight:bold;">Office</td>
+<td>
+    <select name="office" class="status-dropdown"
+        onchange="updateColor(this)"
+        {% if is_student %}disabled{% endif %}
+    >
+
+        <option value="">Select</option>
+
+        <option value="Verified"
+        {% if verifications.0.office_status == "Verified" %}selected{% endif %}>
+        Verified
+        </option>
+
+        <option value="Not Verified"
+        {% if verifications.0.office_status == "Not Verified" %}selected{% endif %}>
+        Not Verified
+        </option>
+
+    </select>
+</td>
+</tr>
+
+
+<!-- OTHER SIGN BOXES -->
+
+<tr>
+<td style="font-weight:bold;">Superintendent</td>
+<td>
+    <div style="width:200px; height:60px; border:2px solid black;"></div>
+</td>
+</tr>
+
+<tr>
+<td style="font-weight:bold;">Department HOD</td>
+<td>
+    <div style="width:200px; height:60px; border:2px solid black;"></div>
+</td>
+</tr>
+
+<tr>
+<td style="font-weight:bold;">Principal</td>
+<td>
+    <div style="width:200px; height:60px; border:2px solid black;"></div>
+</td>
+</tr>
+
+</table>
+
+<br>
+
+<!-- ✅ SAVE BUTTON ONLY FOR OFFICE -->
+{% if not is_student %}
+<button type="submit" class="btn">Save</button>
+{% endif %}
+
+</form>
+
+</div>
+
+
+<!-- ✅ SCRIPT FOR COLOR CHANGE -->
+
+<script>
+function updateColor(select){
+
+    select.classList.remove("verified", "not-verified");
+
+    if(select.value === "Verified"){
+        select.classList.add("verified");
+    }
+    else if(select.value === "Not Verified"){
+        select.classList.add("not-verified");
+    }
+}
+
+// apply color on page load
+window.onload = function(){
+    document.querySelectorAll(".status-dropdown").forEach(function(select){
+        updateColor(select);
+    });
+}
+</script>
+
+</body>
+</html>

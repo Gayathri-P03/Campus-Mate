@@ -1,0 +1,199 @@
+body{
+margin:0;
+font-family:Arial;
+background:#f0f2f5;
+}
+
+.header{
+background:#075E54;
+color:white;
+padding:15px;
+font-size:20px;
+text-align:center;
+}
+
+.group-list{
+padding:20px;
+}
+
+.group{
+display:block;
+background:white;
+padding:15px;
+margin-bottom:10px;
+border-radius:8px;
+text-decoration:none;
+color:black;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.group:hover
+
+/* Chat messages container */
+
+.chat-box{
+display:flex;
+flex-direction:column;
+padding:20px;
+}
+
+/* Common message style */
+
+.message{
+max-width:60%;
+padding:10px 14px;
+margin-bottom:10px;
+border-radius:8px;
+font-size:14px;
+}
+
+/* Staff message (LEFT - White) */
+
+.staff-msg{
+background:white;
+align-self:flex-start;
+}
+
+/* Student message (RIGHT - Green) */
+
+.student-msg{
+background:#dcf8c6;
+align-self:flex-end;
+}
+
+/* Sender name */
+
+.sender{
+font-size:12px;
+font-weight:bold;
+margin-bottom:4px;
+color:#555;
+}
+.chat-box{
+display:flex;
+flex-direction:column;
+padding:20px;
+}
+
+/* common bubble */
+
+.message{
+max-width:60%;
+padding:10px 14px;
+margin-bottom:10px;
+border-radius:8px;
+font-size:14px;
+}
+
+/* staff message RIGHT */
+
+.staff-msg{
+background:#dcf8c6;
+align-self:flex-end;
+}
+
+/* student message LEFT */
+
+.student-msg{
+background:white;
+align-self:flex-start;
+}
+.chat-box{
+display:flex;
+flex-direction:column;
+padding:20px;
+}
+
+/* chat bubble */
+
+.message{
+max-width:60%;
+padding:10px 14px;
+margin-bottom:10px;
+border-radius:10px;
+font-size:14px;
+}
+
+/* STAFF → RIGHT */
+
+.staff-msg{
+background:#dcf8c6;
+margin-left:auto;
+}
+
+/* STUDENT → LEFT */
+
+.student-msg{
+background:white;
+margin-right:auto;
+}
+.chat-box{
+display:flex;
+flex-direction:column;
+padding:20px;
+}
+
+/* message bubble */
+
+.message{
+max-width:60%;
+padding:10px 14px;
+margin-bottom:10px;
+border-radius:10px;
+font-size:14px;
+}
+
+/* STAFF → RIGHT (green) */
+
+.staff-msg{
+background:#dcf8c6;
+margin-left:auto;
+}
+
+/* STUDENT → LEFT (white) */
+
+.student-msg{
+background:white;
+margin-right:auto;
+}
+
+.msg-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:12px;
+margin-bottom:5px;
+}
+
+.right-side{
+display:flex;
+align-items:center;
+gap:10px;
+position:relative;
+}
+
+.dots{
+cursor:pointer;
+font-size:18px;
+}
+
+.dropdown{
+display:none;
+position:absolute;
+top:20px;
+right:0;
+background:white;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.dropdown a{
+display:block;
+padding:6px 12px;
+text-decoration:none;
+color:black;
+}
+
+.dropdown a:hover{
+background:#f2f2f2;
+}

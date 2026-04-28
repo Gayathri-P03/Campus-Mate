@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Feedback</title>
+
+<link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+
+<script>
+
+function rate(questionId, value){
+
+let stars = document.querySelectorAll("#"+questionId+" .star")
+
+stars.forEach((star, index) => {
+
+if(index < value){
+    star.classList.add("active")
+}
+else{
+    star.classList.remove("active")
+}
+
+})
+
+/* SAVE VALUE */
+
+let parts = questionId.split("_")
+let staffIndex = parts[0].replace("q","")
+let qno = parts[1]
+
+document.getElementById("input_"+staffIndex+"_"+qno).value = value
+
+}
+
+/* Check before saving */
+
+function saveFeedback(){
+
+let username=document.getElementById("username").value
+let registerno=document.getElementById("registerno").value
+
+if(username=="" || registerno==""){
+alert("Please enter Username and Register Number")
+return
+}
+
+/* check all questions */
+
+let questions=document.querySelectorAll("[id^='q']")
+
+for(let q of questions){
+
+let rated=q.querySelectorAll(".star.active").length
+
+if(rated==0){
+alert("Give feedback for all questions")
+return
+}
+
+}
+
+/* SUBMIT */
+
+document.getElementById("feedbackForm").submit()
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<form method="POST" id="feedbackForm">
+{% csrf_token %}
+
+<div class="container">
+
+<h2>Student Feedback Form</h2>
+
+<!-- USER LOGIN -->
+
+<div class="login-box">
+
+<div class="input-group">
+<label>User Name</label>
+<input type="text" id="username" name="username">
+</div>
+
+<div class="input-group">
+<label>Register Number</label>
+<input type="password" id="registerno" name="registerno">
+</div>
+
+</div>
+
+<script>
+
+const staffs=[
+"Kalaivani",
+"Vinoth Kumar",
+"Dhanalakshmi",
+"Xavier Mary",
+"Vikram",
+"Meena"
+]
+
+const questions=[
+
+"Clarity of Explanation of concepts",
+"Knowledge of the subject",
+"Ability to make classes interesting and engaging",
+"use of examples and pratical applications",
+"Interaction and encouragement of student participation",
+"Punctuality and regularity of classes",
+"Completion of syllabus on time",
+"Responsiveness to student doubts",
+"Fairness in tests,assignments and evaluation",
+"Overall teaching Effectiveness"
+
+]
+
+staffs.forEach((staff,staffIndex)=>{
+
+document.write(`
+<div class="staff">
+
+<h3>${staff}</h3>
+
+<table>
+`)
+
+for(let i=1;i<=10;i++){
+
+document.write(`
+<tr>
+
+<td width="70%">
+${questions[i-1]}
+</td>
+
+<td id="q${staffIndex}_${i}">
+
+<input type="hidden" name="${staffIndex}_q${i}" id="input_${staffIndex}_${i}">
+
+<span class="star" onclick="rate('q${staffIndex}_${i}',1)">★</span>
+<span class="star" onclick="rate('q${staffIndex}_${i}',2)">★</span>
+<span class="star" onclick="rate('q${staffIndex}_${i}',3)">★</span>
+<span class="star" onclick="rate('q${staffIndex}_${i}',4)">★</span>
+<span class="star" onclick="rate('q${staffIndex}_${i}',5)">★</span>
+
+</td>
+
+</tr>
+`)
+}
+
+document.write(`
+</table>
+</div>
+`)
+})
+
+</script>
+
+<button type="button" class="save-btn" onclick="saveFeedback()">Save All</button>
+
+</div>
+
+</form>
+
+</body>
+</html>

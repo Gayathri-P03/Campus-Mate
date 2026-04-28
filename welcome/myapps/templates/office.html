@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Office Communication</title>
+
+<link rel="stylesheet" href="/static/css/office.css">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>🏢 Office Communication</h2>
+
+</div>
+
+
+<div class="chat-container">
+
+<div class="chat-box" id="chatBox">
+    {% for msg in messages %}
+<div class="message">
+<b>{{ msg.sender }}</b> : {{ msg.message }}
+
+<br>
+
+{% if msg.file %}
+<a href="{{ msg.file.url }}" target="_blank">📎 Open File</a>
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+
+</div>
+
+
+<!-- Students only view this section -->
+
+<div class="input-area">
+
+<input type="text" placeholder="Students can only view messages" disabled>
+
+<button disabled>Send</button>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page background */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #eaf4ff;
+}
+
+/* 🔵 Header */
+.header {
+    background-color: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Container */
+.class-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 80px;
+    flex-wrap: wrap;
+}
+
+/* 🔥 BIG BUTTON STYLE */
+.class-card {
+    width: 260px;
+    height: 120px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+
+    /* Gradient light blue */
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    color: white;
+
+    /* Shadow */
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+
+    /* Smooth animation */
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.class-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(30, 64, 175, 0.5);
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+/* Click effect */
+.class-card:active {
+    transform: scale(0.96);
+}
