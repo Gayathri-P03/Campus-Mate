@@ -44,12 +44,12 @@ Campus Mate is a Django-based web application that helps manage college academic
 
 ---
 
-## ⚙️ How to Run
+How to Run
 
 ```bash
 python manage.py runserver
 ---
 
-## 👩‍💻 Author
+ Author
 
 Gayathri P
