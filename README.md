@@ -4,7 +4,7 @@ Campus Mate is a Django-based web application that helps manage college academic
 
 ---
 
-## 🚀 Features
+##  Features
 
 - AI Chatbot for student queries  
 - Student navigation system (assignments, results)  
@@ -13,7 +13,7 @@ Campus Mate is a Django-based web application that helps manage college academic
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - Python  
 - Django  
@@ -21,7 +21,7 @@ Campus Mate is a Django-based web application that helps manage college academic
 - SQLite  
 
 ---
-## 📸 Screenshots
+##  Screenshots
 
 ### Home Page
 ![Home Page](images/home.png)
